@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高度变化</title>
+  <style>
+    .btn {
+      width: 50px;
+      height: 30px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .detail {
+      width: 300px;
+      height: 0;
+      overflow: hidden;
+      background-color: #4CAF50;
+      box-sizing: border-box;
+      margin-top: 10px;
+      text-align: center;
+      transition: 0.5s;
+      color: white;
+      border-radius: 5px;
+      word-wrap: break-word; /* 确保内容超过宽度时自动换行 */
+      padding: 10px;
+    }
+    .inner {
+      padding: 10px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <button class="btn">点击</button>
+    <div class="detail"><div class="inner">
+      bsdugc;DUOGV;OudgvougO'CH'WEIPH'PAISH'VIOGFJVBALJKVBIEUGFV;DZBX.VKLAE'FHV;OAIEBV;/
+    </div></div>
+  </div>
+  <script>
+    const btn = document.querySelector('.btn');
+    const detail = document.querySelector('.detail');
+
+    btn.onmouseenter = () => {
+      detail.style.height = 'auto';
+      const { height } = detail.getBoundingClientRect();
+      console.log(detail.getBoundingClientRect());
+      detail.style.height = 0;
+      detail.getBoundingClientRect(); // 触发重绘，使动画生效
+      detail.style.height = `${height}px`;
+    }
+
+    btn.onmouseleave = () => {
+      detail.style.height = 0;
+    }
+  </script>
+</body>
+</html>
